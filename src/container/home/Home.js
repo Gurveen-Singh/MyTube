@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import CategoriesBar from "../../components/categoriesBar";
 import Video from "../../components/video";
 
-const HomeScreen = () => {
+const Home = () => {
   return (
     <Container>
       <CategoriesBar />
@@ -18,4 +18,4 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default Home;
