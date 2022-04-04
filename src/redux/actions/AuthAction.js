@@ -5,7 +5,7 @@ import {
   LOGIN_FAIL,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
-  LOGOUT,
+  LOG_OUT,
 } from "../ActionType";
 
 export const login = () => async (dispatch) => {
@@ -15,23 +15,24 @@ export const login = () => async (dispatch) => {
     });
 
     const provider = new firebase.auth.GoogleAuthProvider();
+    console.log(auth);
     provider.addScope("https://www.googleapis.com/auth/youtube.force-ssl");
 
     const res = await auth.signInWithPopup(provider);
     const accessToken = res.credential.accessToken;
+
     const profile = {
       name: res.additionalUserInfo.profile.name,
       photoURL: res.additionalUserInfo.profile.picture,
     };
 
-    sessionStorage.setItem("myTube-access-token", accessToken);
-    sessionStorage.setItem("myTube-user", JSON.stringify(profile));
+    sessionStorage.setItem("ytc-access-token", accessToken);
+    sessionStorage.setItem("ytc-user", JSON.stringify(profile));
 
     dispatch({
       type: LOGIN_SUCCESS,
       payload: accessToken,
     });
-
     dispatch({
       type: LOAD_PROFILE,
       payload: profile,
@@ -48,9 +49,9 @@ export const login = () => async (dispatch) => {
 export const log_out = () => async (dispatch) => {
   await auth.signOut();
   dispatch({
-    type: LOGOUT,
+    type: LOG_OUT,
   });
 
-  sessionStorage.removeItem("myTube-access-token");
-  sessionStorage.removeItem("myTube-user");
+  sessionStorage.removeItem("ytc-access-token");
+  sessionStorage.removeItem("ytc-user");
 };

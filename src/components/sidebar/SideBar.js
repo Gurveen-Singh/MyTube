@@ -8,7 +8,6 @@ import {
   MdHistory,
   MdLibraryBooks,
   MdHome,
-  MdSentimentDissatisfied,
 } from "react-icons/md";
 
 import { useDispatch } from "react-redux";
@@ -16,7 +15,7 @@ import { log_out } from "../../redux/actions/AuthAction";
 
 const Sidebar = ({ sidebar, handleToggleSidebar }) => {
   const dispatch = useDispatch();
-  const logOutHandle = () => {
+  const logOutHandler = () => {
     dispatch(log_out());
   };
 
@@ -48,15 +47,11 @@ const Sidebar = ({ sidebar, handleToggleSidebar }) => {
         <MdLibraryBooks size={23} />
         <span>Library</span>
       </li>
-      <li>
-        <MdSentimentDissatisfied size={23} />
-        <span>I don't Know</span>
-      </li>
 
       <hr />
 
-      <li>
-        <MdExitToApp onClick={logOutHandle} size={23} />
+      <li onClick={logOutHandler}>
+        <MdExitToApp size={23} />
         <span>Log Out</span>
       </li>
 

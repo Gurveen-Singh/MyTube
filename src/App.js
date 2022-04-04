@@ -18,7 +18,7 @@ const App = () => {
     if (!loading && accessToken) {
       navigate("/login");
     }
-  }, [accessToken, loading]);
+  }, [accessToken, loading, navigate]);
 
   const [sidebar, toggleSidebar] = useState(false);
 
