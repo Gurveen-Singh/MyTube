@@ -6,7 +6,7 @@ import request from "../../api/Api";
 
 import moment from "moment";
 import numeral from "numeral";
-// import { LazyLoadImage } from 'react-lazy-load-image-component'
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useNavigate } from "react-router-dom";
 const Video = ({ video, channelScreen }) => {
   const {
@@ -70,8 +70,7 @@ const Video = ({ video, channelScreen }) => {
   return (
     <div className="video" onClick={handleVideoClick}>
       <div className="video__top">
-        <img src={medium.url} alt="" />
-        {/* <LazyLoadImage src={medium.url} effect="blur" /> */}
+        <LazyLoadImage src={medium.url} effect="blur" />
         <span className="video__top__duration">{_duration}</span>
       </div>
       <div className="video__title">{title}</div>
@@ -83,8 +82,7 @@ const Video = ({ video, channelScreen }) => {
       </div>
       {!channelScreen && (
         <div className="video__channel">
-          {/* <LazyLoadImage src={channelIcon?.url} effect="blur" /> */}
-          <img src={channelIcon?.url} alt="" />
+          <LazyLoadImage src={channelIcon?.url} effect="blur" />
 
           <p>{channelTitle}</p>
         </div>
