@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
-import { useSelector } from "react-redux";
+
 import Header from "./components/header/Header";
 import Sidebar from "./components/sidebar/SideBar";
-import Home from "./container/home";
 import Login from "./container/login";
+import Home from "./container/home";
+import WatchVideo from "./container/watchVideo";
 
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 
 import "./App.scss";
+import { useSelector } from "react-redux";
 
 const App = () => {
   const { accessToken, loading } = useSelector((state) => state.auth);
@@ -33,6 +35,7 @@ const App = () => {
           <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/watch:id" element={<WatchVideo />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Container>

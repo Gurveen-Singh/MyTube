@@ -1,5 +1,6 @@
 import auth from "../../FireBase";
 import firebase from "firebase/compat/app";
+
 import {
   LOAD_PROFILE,
   LOGIN_FAIL,
@@ -15,7 +16,6 @@ export const login = () => async (dispatch) => {
     });
 
     const provider = new firebase.auth.GoogleAuthProvider();
-    console.log(auth);
     provider.addScope("https://www.googleapis.com/auth/youtube.force-ssl");
 
     const res = await auth.signInWithPopup(provider);
