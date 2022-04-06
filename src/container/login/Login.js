@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../redux/actions/AuthAction";
+
 import "./Login.scss";
 
 const Login = () => {
@@ -13,13 +14,13 @@ const Login = () => {
     dispatch(login());
   };
 
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (accessToken) {
-      history("/");
+      navigate("/");
     }
-  }, [accessToken, history]);
+  }, [accessToken, navigate]);
 
   return (
     <div className="login">
@@ -27,7 +28,7 @@ const Login = () => {
         <h2>Youtube Clone</h2>
         <img src="http://pngimg.com/uploads/youtube/youtube_PNG2.png" alt="" />
         <button onClick={handleLogin}>Login With google</button>
-        <p>Made By Gurveen Singh</p>
+        <p>Made by Gurveen</p>
       </div>
     </div>
   );

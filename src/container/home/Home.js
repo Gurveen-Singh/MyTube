@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Col, Container } from "react-bootstrap";
-import Video from "../../components/video/Video";
-import CategoriesBar from "../../components/categoriesBar/CategoriesBar";
+import { Video, CategoriesBar, SkeletonVideo } from "../../components/index";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
   getPopularVideos,
@@ -9,9 +9,8 @@ import {
 } from "../../redux/actions/VideosAction";
 
 import InfiniteScroll from "react-infinite-scroll-component";
-import SkeletonVideo from "../../components/skeletons/SkeletonVideo";
 
-const HomeScreen = () => {
+const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPopularVideos());
@@ -57,4 +56,4 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default Home;

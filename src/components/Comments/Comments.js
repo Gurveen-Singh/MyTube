@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addComment,
   getCommentsOfVideoById,
-} from "../../redux/actions/comments.action";
+} from "../../redux/actions/CommentsAction";
 import Comment from "../comment/Comment";
 import "./Comments.scss";
+
 const Comments = ({ videoId, totalComments }) => {
   const dispatch = useDispatch();
 

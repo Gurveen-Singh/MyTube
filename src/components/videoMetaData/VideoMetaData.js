@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   checkSubscriptionStatus,
   getChannelDetails,
-} from "../../redux/actions/channel.action";
+} from "../../redux/actions/ChannelAction";
 import HelmetCustom from "../HelmetCustom";
 
 const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {

@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 
 const HelmetCustom = ({
   title = "Youtube using Youtube",
-  description = "a project made with youtube api adn react js",
+  description = "A project made with youtube Api, react js, redux, react-bootstrap, and firebase",
 }) => {
   return (
     <Helmet>

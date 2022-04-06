@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 
-import Header from "./components/header/Header";
-import Sidebar from "./components/sidebar/SideBar";
-import Login from "./container/login";
-import Home from "./container/home";
-import WatchVideo from "./container/watchVideo";
+import { Header, SideBar } from "./components/index";
+import { Login, Home, WatchVideo } from "./container/index";
 
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 
@@ -30,7 +27,7 @@ const App = () => {
     <React.Fragment>
       <Header handleToggleSidebar={handleToggleSidebar} />
       <div className="app__container">
-        <Sidebar sidebar={sidebar} handleToggleSidebar={handleToggleSidebar} />
+        <SideBar sidebar={sidebar} handleToggleSidebar={handleToggleSidebar} />
         <Container fluid className="app__main ">
           <Routes>
             <Route path="/" exact element={<Home />} />

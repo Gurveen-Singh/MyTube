@@ -3,10 +3,9 @@ import { Col, Row } from "react-bootstrap";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-// import Comments from "../../components/comments/Comments";
-// import VideoHorizontal from "../../components/videoHorizontal/VideoHorizontal";
-import VideoMetaData from "../../components/VideoMetaData";
-// import { Helmet } from "react-helmet";
+import { Comments, VideoList, VideoMetaData } from "../../components/index";
+
+import { Helmet } from "react-helmet";
 import {
   getRelatedVideos,
   getVideoById,
@@ -32,9 +31,9 @@ const WatchVideo = () => {
 
   return (
     <Row>
-      {/* <Helmet>
+      <Helmet>
         <title>{video?.snippet?.title}</title>
-      </Helmet> */}
+      </Helmet>
       <Col lg={8}>
         <div className="watchScreen__player">
           <iframe
@@ -46,29 +45,27 @@ const WatchVideo = () => {
             height="100%"
           ></iframe>
         </div>
-        {/* {!loading ? (
+        {!loading ? (
           <VideoMetaData video={video} videoId={id} />
         ) : (
           <h6>Loading...</h6>
-        )} */}
+        )}
 
-        {/* <Comments
+        <Comments
           videoId={id}
           totalComments={video?.statistics?.commentCount}
-        /> */}
+        />
       </Col>
       <Col lg={4}>
-        {/* {!loading ? (
+        {!loading ? (
           videos
             ?.filter((video) => video.snippet)
-            .map((video) => (
-              <VideoHorizontal video={video} key={video.id.videoId} />
-            ))
+            .map((video) => <VideoList video={video} key={video.id.videoId} />)
         ) : (
           <SkeletonTheme color="#343a40" highlightColor="#3c4147">
             <Skeleton width="100%" height="130px" count={15} />
           </SkeletonTheme>
-        )} */}
+        )}
       </Col>
     </Row>
   );
