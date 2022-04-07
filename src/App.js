@@ -2,7 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 
 import { Header, SideBar } from "./components/index";
-import { Login, Home, WatchVideo } from "./container/index";
+import {
+  Login,
+  Home,
+  WatchVideo,
+  Search,
+  Channel,
+  Subscription,
+} from "./container/index";
 
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 
@@ -31,8 +38,11 @@ const App = () => {
         <Container fluid className="app__main ">
           <Routes>
             <Route path="/" exact element={<Home />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/auth" element={<Login />} />
+            <Route path="/search/:query" element={<Search />} />
             <Route path="/watch:id" element={<WatchVideo />} />
+            <Route path="/feed/subscriptions" element={<Subscription />} />
+            <Route path="/channel/:channelId" element={<Channel />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Container>
