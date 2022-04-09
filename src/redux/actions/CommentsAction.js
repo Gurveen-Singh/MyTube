@@ -1,3 +1,4 @@
+import request from "../../api/Api";
 import {
   COMMENT_LIST_FAIL,
   COMMENT_LIST_REQUEST,
@@ -5,7 +6,6 @@ import {
   CREATE_COMMENT_FAIL,
   CREATE_COMMENT_SUCCESS,
 } from "../ActionType";
-import request from "../../api/Api";
 
 export const getCommentsOfVideoById = (id) => async (dispatch) => {
   try {

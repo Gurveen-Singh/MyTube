@@ -36,6 +36,7 @@ const App = () => {
       <div className="app__container">
         <SideBar sidebar={sidebar} handleToggleSidebar={handleToggleSidebar} />
         <Container fluid className="app__main ">
+          {accessToken ? <Routes /> : <Login />}
           <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/auth" element={<Login />} />

@@ -41,13 +41,13 @@ const Home = () => {
         className="row"
       >
         {!loading
-          ? videos.map((video) => (
-              <Col lg={3} md={4}>
-                <Video video={video} key={video.id} />
+          ? videos.map((video, index) => (
+              <Col lg={3} md={4} key={index}>
+                <Video video={video} />
               </Col>
             ))
-          : [...Array(20)].map(() => (
-              <Col lg={3} md={4}>
+          : [...Array(20)].map((_, index) => (
+              <Col lg={3} md={4} key={index}>
                 <SkeletonVideo />
               </Col>
             ))}

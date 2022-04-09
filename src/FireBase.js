@@ -2,12 +2,12 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAI6JXC3buaeuzvcW11CVyM8ylyLdb2fHY",
-  authDomain: "mytube-g.firebaseapp.com",
-  projectId: "mytube-g",
-  storageBucket: "mytube-g.appspot.com",
-  messagingSenderId: "440073586220",
-  appId: "1:440073586220:web:1d397d38cc15c4f314b389",
+  apiKey: "AIzaSyDw8yhzu93uyNaVGhADuaU5b4RfBQaQ7gk",
+  authDomain: "my-tube1-1cf81.firebaseapp.com",
+  projectId: "my-tube1-1cf81",
+  storageBucket: "my-tube1-1cf81.appspot.com",
+  messagingSenderId: "215288213680",
+  appId: "1:215288213680:web:b52d931a6d833bad310b75",
 };
 
 firebase.initializeApp(firebaseConfig);
