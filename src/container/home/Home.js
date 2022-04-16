@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Col, Container } from "react-bootstrap";
-import { Video, CategoriesBar, SkeletonVideo } from "../../components/index";
-
+import Video from "../../components/video/Video";
+import CategoriesBar from "../../components/categoriesBar/CategoriesBar";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getPopularVideos,
@@ -9,6 +9,7 @@ import {
 } from "../../redux/actions/VideosAction";
 
 import InfiniteScroll from "react-infinite-scroll-component";
+import SkeletonVideo from "../../components/skeletons/SkeletonVideo";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -41,8 +42,8 @@ const Home = () => {
         className="row"
       >
         {!loading
-          ? videos.map((video, index) => (
-              <Col lg={3} md={4} key={index}>
+          ? videos.map((video) => (
+              <Col lg={3} md={4} key={video.id}>
                 <Video video={video} />
               </Col>
             ))

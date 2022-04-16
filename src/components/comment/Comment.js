@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment";
 import "./Comment.scss";
+
 const Comment = ({ comment }) => {
   const { authorDisplayName, authorProfileImageUrl, publishedAt, textDisplay } =
     comment;

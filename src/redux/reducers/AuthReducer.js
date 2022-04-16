@@ -4,7 +4,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOG_OUT,
-} from "../ActionType";
+} from "../actionType";
 
 const initialState = {
   accessToken: sessionStorage.getItem("ytc-access-token")

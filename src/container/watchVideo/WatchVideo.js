@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Comments, VideoList, VideoMetaData } from "../../components/index";
 
-import { Helmet } from "react-helmet";
 import {
   getRelatedVideos,
   getVideoById,
@@ -31,9 +30,6 @@ const WatchVideo = () => {
 
   return (
     <Row>
-      <Helmet>
-        <title>{video?.snippet?.title}</title>
-      </Helmet>
       <Col lg={8}>
         <div className="watchScreen__player">
           <iframe

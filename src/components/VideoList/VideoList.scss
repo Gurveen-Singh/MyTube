@@ -8,15 +8,10 @@
   &__left {
     position: relative;
     text-align: center;
-    padding-left: 0 !important;
   }
 
   &__thumbnail {
     width: 100%;
-    &-channel {
-      width: 50%;
-      border-radius: 50%;
-    }
 
     &-wrapper {
       width: 100%;
@@ -40,16 +35,12 @@
   }
 
   &__title {
-    font-size: 0.95rem;
+    font-size: 1rem;
 
     // color: #fff;
     letter-spacing: 0.3px;
 
     @include line-clamp(2);
-  }
-  &__desc {
-    @include line-clamp(2);
-    font-size: 0.9rem;
   }
 
   &__channel {
@@ -82,17 +73,17 @@
         display: none;
       }
       p {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
       }
     }
 
-    &__desc {
-      display: none;
-    }
+    //   &__desc {
+    //      display: none;
+    //   }
 
     &__title {
-      font-size: 0.9rem;
-      @include line-clamp(1);
+      font-size: 1rem;
+      @include line-clamp(2);
     }
   }
 }

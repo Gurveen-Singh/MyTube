@@ -5,7 +5,7 @@ import {
   COMMENT_LIST_SUCCESS,
   CREATE_COMMENT_FAIL,
   CREATE_COMMENT_SUCCESS,
-} from "../ActionType";
+} from "../actionType";
 
 export const getCommentsOfVideoById = (id) => async (dispatch) => {
   try {

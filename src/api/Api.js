@@ -1,9 +1,9 @@
 import axios from "axios";
-
 const request = axios.create({
-  baseURL: "https://www.googleapis.com/youtube/v3",
+  baseURL: "https://youtube.googleapis.com/youtube/v3/",
   params: {
-    key: "AIzaSyBQMY7FVXjab3lKpQMSuADYiUmYfBj4xIM",
+    // key: process.env.REACT_APP_MY_TUBE_KEY,
+    key: "AIzaSyCB2_HUQQDC-GQItFJrbLLdIMMcpXBdDdg",
   },
 });
 

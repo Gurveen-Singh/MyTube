@@ -4,7 +4,7 @@ import {
   CHANNEL_DETAILS_REQUEST,
   CHANNEL_DETAILS_SUCCESS,
   SET_SUBSCRIPTION_STATUS,
-} from "../ActionType";
+} from "../actionType";
 
 export const getChannelDetails = (id) => async (dispatch) => {
   try {
