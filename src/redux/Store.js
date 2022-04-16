@@ -12,7 +12,6 @@ import {
   channelVideosReducer,
   selectedVideoReducer,
 } from "./reducers/VideoReducer";
-// import { selectedVideoReducer } from "./reducers/videos.reducer";
 import { channelDetailsReducer } from "./reducers/ChannelReducer";
 import { commentListReducer } from "./reducers/CommentsReducer";
 
