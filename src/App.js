@@ -6,9 +6,9 @@ import {
   Login,
   Home,
   WatchVideo,
-  // Search,
-  // Channel,
-  // Subscription,
+  Search,
+  Channel,
+  Subscription,
 } from "./container/index";
 
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
@@ -17,8 +17,11 @@ import "./App.scss";
 import { useSelector } from "react-redux";
 
 const App = () => {
-  const handleToggleSidebar = () => toggleSidebar((value) => !value);
+  const [sidebar, toggleSidebar] = useState(false);
   const { accessToken, loading } = useSelector((state) => state.auth);
+
+  const handleToggleSidebar = () => toggleSidebar((value) => !value);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,9 +29,7 @@ const App = () => {
       navigate("/auth");
     }
   }, [accessToken, loading, navigate]);
-
-  const [sidebar, toggleSidebar] = useState(false);
-
+  console.log(accessToken);
   return (
     <React.Fragment>
       <Header handleToggleSidebar={handleToggleSidebar} />
@@ -38,7 +39,10 @@ const App = () => {
           <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/auth" element={<Login />} />
+            <Route path="/search/:query" element={<Search />} />
             <Route path="/watch/:id" element={<WatchVideo />} />
+            <Route path="/feed/subscriptions" element={<Subscription />} />
+            <Route path="/channel/:channelId" element={<Channel />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Container>
