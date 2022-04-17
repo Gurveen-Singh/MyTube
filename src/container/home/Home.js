@@ -22,8 +22,9 @@ const Home = () => {
   );
 
   const fetchData = () => {
-    if (activeCategory === "All") dispatch(getPopularVideos());
-    else {
+    if (activeCategory === "All") {
+      dispatch(getPopularVideos());
+    } else {
       dispatch(getVideosByCategory(activeCategory));
     }
   };
