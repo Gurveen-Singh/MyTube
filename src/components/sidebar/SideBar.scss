@@ -15,10 +15,20 @@
   top: 10vh;
   left: 0;
 
+  a {
+    color: $text-color;
+    text-decoration: none;
+
+    &:hover {
+      color: $text-color;
+      text-decoration: none;
+    }
+  }
+
   li {
     display: flex;
     align-items: center;
-    text-decoration: none;
+
     padding: 0.6rem 1.5rem;
     margin: 0.2rem 0;
     cursor: pointer;
@@ -34,14 +44,7 @@
       background-color: $border-color;
     }
   }
-  a {
-    text-decoration: none;
-    color: $text-color;
 
-    &:hover {
-      color: $text-color;
-    }
-  }
   hr {
     background-color: $border-color;
   }

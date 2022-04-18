@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 
 import { Header, SideBar } from "./components/index";
@@ -11,25 +11,15 @@ import {
   Subscription,
 } from "./container/index";
 
-import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 
 import "./App.scss";
-import { useSelector } from "react-redux";
 
 const App = () => {
   const [sidebar, toggleSidebar] = useState(false);
-  const { accessToken, loading } = useSelector((state) => state.auth);
 
   const handleToggleSidebar = () => toggleSidebar((value) => !value);
 
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!loading && accessToken) {
-      navigate("/auth");
-    }
-  }, [accessToken, loading, navigate]);
-  console.log(accessToken);
   return (
     <React.Fragment>
       <Header handleToggleSidebar={handleToggleSidebar} />

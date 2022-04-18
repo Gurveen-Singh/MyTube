@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./SideBar.scss";
 
 import {
@@ -6,28 +6,44 @@ import {
   MdExitToApp,
   MdThumbUp,
   MdHistory,
-  MdLibraryBooks,
   MdHome,
 } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { log_out } from "../../redux/actions/AuthAction";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const SideBar = ({ sidebar, handleToggleSidebar }) => {
   const dispatch = useDispatch();
   const logOutHandler = () => {
     dispatch(log_out());
   };
+
+  const [path, setPath] = useState("/auth");
+
+  const { accessToken } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (accessToken) {
+      setPath("/feed/subscriptions");
+    } else {
+      setPath("/auth");
+    }
+  }, [accessToken]);
+
   return (
     <nav
       className={sidebar ? "sidebar open" : "sidebar"}
       onClick={() => handleToggleSidebar(false)}
     >
-      <li>
-        <MdHome size={23} />
-        <span>Home</span>
-      </li>
-      <Link to="/feed/subscriptions">
+      <Link to="/">
+        <li>
+          <MdHome size={23} />
+          <span>Home</span>
+        </li>
+      </Link>
+
+      <Link to={path}>
         <li>
           <MdSubscriptions size={23} />
           <span>Subscriptions</span>
@@ -44,11 +60,8 @@ const SideBar = ({ sidebar, handleToggleSidebar }) => {
         <span>History</span>
       </li>
 
-      <li>
-        <MdLibraryBooks size={23} />
-        <span>Library</span>
-      </li>
       <hr />
+
       <li onClick={logOutHandler}>
         <MdExitToApp size={23} />
         <span>Log Out</span>

@@ -14,6 +14,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 50%;
+    height: 50%;
 
     button {
       padding: 0.5rem;
@@ -27,8 +29,8 @@
   }
 
   img {
-    width: 130px;
-    height: 130px;
+    width: 140px;
+    height: 140px;
     object-fit: contain;
   }
 }

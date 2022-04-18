@@ -20,8 +20,8 @@ const Search = () => {
   return (
     <Container>
       {!loading ? (
-        videos?.map((video) => (
-          <VideoList video={video} key={video.id.videoId} searchScreen />
+        videos?.map((video, index) => (
+          <VideoList video={video} key={index} searchScreen />
         ))
       ) : (
         <SkeletonTheme color="#343a40" highlightColor="#3c4147">

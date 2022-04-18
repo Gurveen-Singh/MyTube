@@ -23,7 +23,6 @@ export const getChannelDetails = (id) => async (dispatch) => {
       payload: data.items[0],
     });
   } catch (error) {
-    console.log(error.response.data);
     dispatch({
       type: CHANNEL_DETAILS_FAIL,
       payload: error.response.data,
@@ -47,7 +46,6 @@ export const checkSubscriptionStatus = (id) => async (dispatch, getState) => {
       type: SET_SUBSCRIPTION_STATUS,
       payload: data.items.length !== 0,
     });
-    console.log(data);
   } catch (error) {
     console.log(error.response.data);
   }

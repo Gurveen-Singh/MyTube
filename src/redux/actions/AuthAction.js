@@ -38,7 +38,6 @@ export const login = () => async (dispatch) => {
       payload: profile,
     });
   } catch (error) {
-    console.log(error.message);
     dispatch({
       type: LOGIN_FAIL,
       payload: error.message,

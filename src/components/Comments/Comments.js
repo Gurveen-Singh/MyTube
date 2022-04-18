@@ -5,6 +5,8 @@ import {
   getCommentsOfVideoById,
 } from "../../redux/actions/CommentsAction";
 import Comment from "../comment/Comment";
+import avatar from "../../icons/avatar.png";
+
 import "./Comments.scss";
 
 const Comments = ({ videoId, totalComments }) => {
@@ -15,6 +17,8 @@ const Comments = ({ videoId, totalComments }) => {
   }, [videoId, dispatch]);
 
   const comments = useSelector((state) => state.commentList.comments);
+
+  const user = useSelector((state) => state.auth?.user);
 
   const [text, setText] = useState("");
 
@@ -34,11 +38,13 @@ const Comments = ({ videoId, totalComments }) => {
     <div className="comments">
       <p>{totalComments} Comments</p>
       <div className="my-2 comments__form d-flex w-100">
-        <img
-          src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png"
-          alt=""
-          className="mr-3 rounded-circle"
-        />
+        <div className="comments__form__avatar">
+          <img
+            src={user === null ? avatar : user?.photoURL}
+            alt="avatar"
+            className="mr-3 rounded-circle"
+          />
+        </div>
         <form onSubmit={handleComment} className="d-flex flex-grow-1">
           <input
             type="text"

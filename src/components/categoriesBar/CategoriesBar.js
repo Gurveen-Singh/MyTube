@@ -17,6 +17,20 @@ const keywords = [
   "Coding",
   "Cricket",
   "Football",
+  "News",
+  "Sports",
+  "Technology",
+  "Movies",
+  "Books",
+  "Games",
+  "Food",
+  "Travel",
+  "Fashion",
+  "Photography",
+  "Health",
+  "Education",
+  "Science",
+  "Nature",
 ];
 
 const CategoriesBar = () => {
