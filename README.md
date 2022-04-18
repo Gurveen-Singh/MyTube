@@ -6,8 +6,8 @@
 
 ## Built with
 
-- [React JS]
-- [Bootstrap]
-- [SASS]
-- [Firebase]
-- [Redux]
+- React JS
+- Bootstrap
+- SASS
+- Firebase
+- Redux
