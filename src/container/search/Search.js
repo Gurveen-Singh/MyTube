@@ -1,3 +1,4 @@
+/* Importing the necessary components and libraries. */
 import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,16 +8,21 @@ import { VideoList } from "../../components/index";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const Search = () => {
+  /* Destructuring the query from the useParams hook. */
   const { query } = useParams();
 
+  /* Creating instance of useDispatch Hook */
   const dispatch = useDispatch();
 
+  /* Destructuring the state of the searchedVideos. */
+  const { videos, loading } = useSelector((state) => state.searchedVideos);
+
+  /* A hook that is used to fetch data from the API. */
   useEffect(() => {
     dispatch(getVideosBySearch(query));
   }, [query, dispatch]);
 
-  const { videos, loading } = useSelector((state) => state.searchedVideos);
-
+  /* Returning the container. */
   return (
     <Container>
       {!loading ? (

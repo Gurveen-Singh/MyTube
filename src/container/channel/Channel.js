@@ -1,3 +1,4 @@
+/* Importing the modules from the libraries. */
 import { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
@@ -12,20 +13,25 @@ import numeral from "numeral";
 import "./Channel.scss";
 
 const Channel = () => {
+  /* Destructuring the channelId from the useParams hook. */
   const { channelId } = useParams();
 
+  /* Creating instance of useDispatch hook */
   const dispatch = useDispatch();
 
+  /* Calling the action creators. */
   useEffect(() => {
     dispatch(getVideosByChannel(channelId));
     dispatch(getChannelDetails(channelId));
   }, [dispatch, channelId]);
 
+  /* Destructuring the state from the redux store. */
   const { videos, loading } = useSelector((state) => state.channelVideos);
   const { snippet, statistics } = useSelector(
     (state) => state.channelDetails.channel
   );
 
+  /* Returning the JSX. */
   return (
     <>
       <div className="px-5 py-2 my-2 d-flex justify-content-between align-items-center channelHeader">
@@ -42,7 +48,6 @@ const Channel = () => {
 
         <button>Subscribe</button>
       </div>
-
       <Container>
         <Row className="mt-2">
           {!loading

@@ -1,10 +1,10 @@
+/* Importing the modules. */
 import React, { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Comments, VideoList, VideoMetaData } from "../../components/index";
-
 import {
   getRelatedVideos,
   getVideoById,
@@ -12,22 +12,28 @@ import {
 import "./WatchVideo.scss";
 
 const WatchVideo = () => {
+  /* Destructuring the id from the useParams hook. */
   const { id } = useParams();
 
+  /* Creating instance of useDispatch Hook */
   const dispatch = useDispatch();
 
+  /* A hook that is used to fetch data from the API. */
   useEffect(() => {
     dispatch(getVideoById(id));
 
     dispatch(getRelatedVideos(id));
   }, [dispatch, id]);
 
+  /* Destructuring the video and loading from the state.selectedVideo. */
+  const { video, loading } = useSelector((state) => state.selectedVideo);
+
+  /* Destructuring the videos and loading from the state.relatedVideos. */
   const { videos, loading: relatedVideosLoading } = useSelector(
     (state) => state.relatedVideos
   );
 
-  const { video, loading } = useSelector((state) => state.selectedVideo);
-
+  /* Returning the JSX. */
   return (
     <Row>
       <Col lg={8}>

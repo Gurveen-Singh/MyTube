@@ -1,3 +1,4 @@
+/* Importing the necessary components and libraries. */
 import React, { useEffect, useState } from "react";
 import "./SideBar.scss";
 
@@ -14,15 +15,24 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const SideBar = ({ sidebar, handleToggleSidebar }) => {
+  /* A hook that allows you to dispatch actions to the Redux store. */
   const dispatch = useDispatch();
+
+  /* A hook that allows you to store a value in the state. */
+  const [path, setPath] = useState("/auth");
+
+  /* A hook that allows you to access the Redux store state. */
+  const { accessToken } = useSelector((state) => state.auth);
+
+  /**
+   * The logOutHandler function is a function that dispatches the log_out action.
+   */
   const logOutHandler = () => {
     dispatch(log_out());
   };
 
-  const [path, setPath] = useState("/auth");
-
-  const { accessToken } = useSelector((state) => state.auth);
-
+  /* Checking if the user is logged in or not. If the user is logged in, the user will be redirected to
+  the subscriptions page. If the user is not logged in, the user will be redirected to the login page. */
   useEffect(() => {
     if (accessToken) {
       setPath("/feed/subscriptions");
@@ -31,6 +41,7 @@ const SideBar = ({ sidebar, handleToggleSidebar }) => {
     }
   }, [accessToken]);
 
+  /* Returning the navbar. */
   return (
     <nav
       className={sidebar ? "sidebar open" : "sidebar"}

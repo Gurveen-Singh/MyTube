@@ -46,6 +46,17 @@
     }
   }
 }
+.videometadata__like {
+  span {
+    margin: 0 0.5rem;
+  }
+}
+
+.videometadata__subscribe {
+  img {
+    margin: 0 0.5rem;
+  }
+}
 
 @media (max-width: $breakpoint-small) {
   .videoMetaData {

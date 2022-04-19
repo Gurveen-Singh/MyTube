@@ -1,3 +1,4 @@
+/* Importing the action types from the actionType.js file. */
 import {
   CHANNEL_VIDEOS_FAIL,
   CHANNEL_VIDEOS_REQUEST,
@@ -20,6 +21,7 @@ import {
 } from "../actionType";
 
 export const homeVideosReducer = (
+  /* The initial state of the reducer. */
   state = {
     videos: [],
     loading: false,
@@ -28,8 +30,10 @@ export const homeVideosReducer = (
   },
   action
 ) => {
+  /* Destructuring the action object. */
   const { type, payload } = action;
 
+  /* A switch statement that is checking the action type and returning the new state. */
   switch (type) {
     case HOME_VIDEOS_SUCCESS:
       return {
@@ -60,6 +64,7 @@ export const homeVideosReducer = (
   }
 };
 
+/* A switch statement that is checking the action type and returning the new state. */
 export const selectedVideoReducer = (
   state = {
     loading: true,
@@ -94,6 +99,7 @@ export const selectedVideoReducer = (
   }
 };
 
+/* A switch statement that is checking the action type and returning the new state. */
 export const relatedVideoReducer = (
   state = {
     loading: true,
@@ -127,6 +133,7 @@ export const relatedVideoReducer = (
   }
 };
 
+/* A switch statement that is checking the action type and returning the new state. */
 export const searchedVideosReducer = (
   state = {
     loading: true,
@@ -160,6 +167,7 @@ export const searchedVideosReducer = (
   }
 };
 
+/* A switch statement that is checking the action type and returning the new state. */
 export const subscriptionsChannelReducer = (
   state = {
     loading: true,
@@ -193,6 +201,7 @@ export const subscriptionsChannelReducer = (
   }
 };
 
+/* A switch statement that is checking the action type and returning the new state. */
 export const channelVideosReducer = (
   state = {
     loading: true,

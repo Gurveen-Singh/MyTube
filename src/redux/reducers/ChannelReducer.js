@@ -1,3 +1,4 @@
+/* Importing the action types from the actionType.js file. */
 import {
   CHANNEL_DETAILS_FAIL,
   CHANNEL_DETAILS_REQUEST,
@@ -6,6 +7,7 @@ import {
 } from "../actionType";
 
 export const channelDetailsReducer = (
+  /* The initial state of the reducer. */
   state = {
     loading: true,
     channel: {},
@@ -13,8 +15,10 @@ export const channelDetailsReducer = (
   },
   action
 ) => {
+  /* Destructuring the action object. */
   const { payload, type } = action;
 
+  /* A switch statement that is checking the action type and returning the new state. */
   switch (type) {
     case CHANNEL_DETAILS_REQUEST:
       return {

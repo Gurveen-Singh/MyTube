@@ -1,3 +1,4 @@
+/* Importing the necessary modules for the component to work. */
 import React, { useEffect, useState } from "react";
 import "./Video.scss";
 
@@ -10,6 +11,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useNavigate } from "react-router-dom";
 
 const Video = ({ video, channelScreen }) => {
+  /* Destructuring the video object. */
   const {
     id,
     snippet: {
@@ -22,17 +24,26 @@ const Video = ({ video, channelScreen }) => {
     contentDetails,
   } = video;
 
+  /* Setting the state of the component. */
   const [views, setViews] = useState(null);
   const [duration, setDuration] = useState(null);
   const [channelIcon, setChannelIcon] = useState(null);
+  /* Converting the duration of the video to a readable format. */
 
   const seconds = moment.duration(duration).asSeconds();
   const _duration = moment.utc(seconds * 1000).format("mm:ss");
 
-  const _videoId = id?.videoId || contentDetails?.videoId || id;
-
+  /* A hook that is used to navigate to a different page. */
   const navigate = useNavigate();
 
+  /* A ternary operator. It is checking if the id is null or not. If it is null, it will check if the
+contentDetails is null or not. If it is not null, it will return the contentDetails. If it is null,
+it will return the id. */
+  const _videoId = id?.videoId || contentDetails?.videoId || id;
+
+  /**
+   * It gets the video details from the YouTube API and sets the data to the state.
+   */
   useEffect(() => {
     const get_video_details = async () => {
       const {
@@ -49,6 +60,9 @@ const Video = ({ video, channelScreen }) => {
     get_video_details();
   }, [_videoId]);
 
+  /**
+   * The function gets the channel icon from the YouTube API and sets the channel icon to the state.
+   */
   useEffect(() => {
     const get_channel_icon = async () => {
       const {
@@ -64,10 +78,16 @@ const Video = ({ video, channelScreen }) => {
     get_channel_icon();
   }, [channelId]);
 
+  /**
+   * Const handleVideoClick = () =&gt; {
+   *     navigate(`/watch/`);
+   *   };
+   */
   const handleVideoClick = () => {
     navigate(`/watch/${_videoId}`);
   };
 
+  /* Returning the JSX code. */
   return (
     <div className="video" onClick={handleVideoClick}>
       <div className="video__top">

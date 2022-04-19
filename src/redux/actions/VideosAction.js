@@ -1,3 +1,4 @@
+/* Importing the action types from the actionType.js file. */
 import {
   CHANNEL_DETAILS_FAIL,
   CHANNEL_VIDEOS_REQUEST,
@@ -18,9 +19,11 @@ import {
   SUBSCRIPTIONS_CHANNEL_REQUEST,
   SUBSCRIPTIONS_CHANNEL_SUCCESS,
 } from "../actionType";
-
 import request from "../../api/Api";
 
+/**
+ * Function to get the popular videos from the youtube api and then store it in the redux store.
+ */
 export const getPopularVideos = () => async (dispatch, getState) => {
   try {
     dispatch({
@@ -52,6 +55,12 @@ export const getPopularVideos = () => async (dispatch, getState) => {
   }
 };
 
+/**
+ * It's an async function that dispatches a request action, then makes an API call, then dispatches a
+ * success action with the data from the API call, or a fail action with the error message from the API
+ * call.
+ * @param keyword - the category of the videos
+ */
 export const getVideosByCategory = (keyword) => async (dispatch, getState) => {
   try {
     dispatch({
@@ -84,6 +93,12 @@ export const getVideosByCategory = (keyword) => async (dispatch, getState) => {
   }
 };
 
+/**
+ * It's a function that takes an id as an argument, and returns a function that takes dispatch as an
+ * argument, and returns an async function that dispatches an action, makes an API call, and dispatches
+ * another action.
+ * @param id - id,
+ */
 export const getVideoById = (id) => async (dispatch) => {
   try {
     dispatch({
@@ -108,6 +123,13 @@ export const getVideoById = (id) => async (dispatch) => {
   }
 };
 
+/**
+ * It's a function that takes an id as an argument and returns a function that takes dispatch as an
+ * argument and returns an async function that dispatches an action with a type of
+ * RELATED_VIDEO_REQUEST, then dispatches an action with a type of RELATED_VIDEO_SUCCESS or
+ * RELATED_VIDEO_FAIL depending on whether the request was successful or not.
+ * @param id - the id of the video you want to get related videos for
+ */
 export const getRelatedVideos = (id) => async (dispatch) => {
   try {
     dispatch({
@@ -134,6 +156,7 @@ export const getRelatedVideos = (id) => async (dispatch) => {
   }
 };
 
+// A function to search for videos by keyword.
 export const getVideosBySearch = (keyword) => async (dispatch) => {
   try {
     dispatch({
@@ -161,6 +184,7 @@ export const getVideosBySearch = (keyword) => async (dispatch) => {
   }
 };
 
+//  A function to get subscibed channels from the youtube api and then store it in the redux store.
 export const getSubscribedChannels = () => async (dispatch, getState) => {
   try {
     dispatch({
@@ -188,6 +212,7 @@ export const getSubscribedChannels = () => async (dispatch, getState) => {
   }
 };
 
+// A function to get the videos of a channel from the youtube api and then store it in the redux store.
 export const getVideosByChannel = (id) => async (dispatch) => {
   try {
     dispatch({

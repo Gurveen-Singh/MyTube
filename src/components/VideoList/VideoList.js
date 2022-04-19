@@ -1,3 +1,4 @@
+/* Importing the necessary modules for the component to work. */
 import React, { useEffect, useState } from "react";
 import "./VideoList.scss";
 
@@ -11,6 +12,7 @@ import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const VideoList = ({ video, searchScreen, subScreen }) => {
+  /* Destructuring the video object. */
   const {
     id,
     snippet: {
@@ -24,12 +26,17 @@ const VideoList = ({ video, searchScreen, subScreen }) => {
     },
   } = video;
 
+  /* Checking if the video is a channel or not. */
   const isVideo = !(id.kind === "youtube#channel" || subScreen);
 
+  /* Setting the state of the component. */
   const [views, setViews] = useState(null);
   const [duration, setDuration] = useState(null);
   const [channelIcon, setChannelIcon] = useState(null);
 
+  /**
+   * It gets the video details from the YouTube API and sets the data to the state.
+   * Converting the duration of the video to a readable format. */
   useEffect(() => {
     const get_video_details = async () => {
       const {
@@ -46,6 +53,9 @@ const VideoList = ({ video, searchScreen, subScreen }) => {
     if (isVideo) get_video_details();
   }, [id, isVideo]);
 
+  /**
+   * The function gets the channel icon from the YouTube API and sets the channel icon to the state.
+   */
   useEffect(() => {
     const get_channel_icon = async () => {
       const {
@@ -61,12 +71,19 @@ const VideoList = ({ video, searchScreen, subScreen }) => {
     get_channel_icon();
   }, [channelId]);
 
+  /* Converting the duration of the video to a readable format. */
   const seconds = moment.duration(duration).asSeconds();
   const _duration = moment.utc(seconds * 1000).format("mm:ss");
 
+  /* A hook that allows you to navigate to a different route. */
   const navigate = useNavigate();
 
+  /* A ternary operator. It is checking if resourceId is not null, if it is not null it will return
+resourceId.channelId, if it is null it will return channelId. */
   const _channelId = resourceId?.channelId || channelId;
+  /**
+   * If the video is a video, navigate to the video page, otherwise navigate to the channel page.
+   */
 
   const handleClick = () => {
     isVideo
@@ -74,14 +91,15 @@ const VideoList = ({ video, searchScreen, subScreen }) => {
       : navigate(`/channel/${_channelId}`);
   };
 
+  /* Checking if the video is a video or not. If it is not a video it will return the class name. */
   const thumbnail = !isVideo && "videoHorizontal__thumbnail-channel";
 
+  /* Returning the JSX code. */
   return (
     <Row
       className="py-2 m-1 videoHorizontal align-items-center"
       onClick={handleClick}
     >
-      {/* //TODO refractor grid */}
       <Col
         xs={6}
         md={searchScreen || subScreen ? 4 : 6}

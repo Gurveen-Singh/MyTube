@@ -1,3 +1,4 @@
+/* Importing the necessary components and functions from the libraries. */
 import React, { useEffect } from "react";
 import { Col, Container } from "react-bootstrap";
 import Video from "../../components/video/Video";
@@ -12,15 +13,23 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import SkeletonVideo from "../../components/skeletons/SkeletonVideo";
 
 const Home = () => {
+  /* A hook that allows you to dispatch actions to the Redux store. */
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getPopularVideos());
-  }, [dispatch]);
 
+  /* Destructuring the state object. */
   const { videos, activeCategory, loading } = useSelector(
     (state) => state.homeVideos
   );
 
+  /* Calling the getPopularVideos() function from the VideosAction.js file. */
+  useEffect(() => {
+    dispatch(getPopularVideos());
+  }, [dispatch]);
+
+  /**
+   * If the activeCategory is "All", then dispatch the getPopularVideos() action, otherwise dispatch the
+   * getVideosByCategory(activeCategory) action.
+   */
   const fetchData = () => {
     if (activeCategory === "All") {
       dispatch(getPopularVideos());
@@ -29,6 +38,7 @@ const Home = () => {
     }
   };
 
+  /* Returning the container, categories bar, and infinite scroll. */
   return (
     <Container>
       <CategoriesBar />

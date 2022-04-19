@@ -1,3 +1,4 @@
+/* Exporting all the components from the components folder. */
 export { default as CategoriesBar } from "./categoriesBar/CategoriesBar";
 export { default as Comment } from "./comment/Comment";
 export { default as Comments } from "./comments/Comments";

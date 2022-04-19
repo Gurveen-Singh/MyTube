@@ -1,3 +1,4 @@
+/* Importing the request from the api folder and the action types from the actionType folder. */
 import request from "../../api/Api";
 import {
   COMMENT_LIST_FAIL,
@@ -7,6 +8,12 @@ import {
   CREATE_COMMENT_SUCCESS,
 } from "../actionType";
 
+/**
+ * It's a function that takes an id as an argument and returns a function that takes dispatch as an
+ * argument and returns an async function that dispatches an action and then dispatches another action
+ * based on the result of an API call.
+ * @param id - the id of the video
+ */
 export const getCommentsOfVideoById = (id) => async (dispatch) => {
   try {
     dispatch({
@@ -31,6 +38,13 @@ export const getCommentsOfVideoById = (id) => async (dispatch) => {
   }
 };
 
+/**
+ * It takes in a video id and a comment text, then it sends a post request to the youtube api to create
+ * a comment on the video, then it dispatches a success action, then it waits 3 seconds and then it
+ * dispatches a getCommentsOfVideoById action.
+ * @param id - the id of the video
+ * @param text - The text of the comment.
+ */
 export const addComment = (id, text) => async (dispatch, getState) => {
   try {
     const obj = {

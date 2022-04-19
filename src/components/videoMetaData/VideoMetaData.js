@@ -1,3 +1,4 @@
+/* Importing the necessary modules. */
 import React, { useEffect } from "react";
 import "./VideoMetaData.scss";
 import moment from "moment";
@@ -12,23 +13,28 @@ import {
 } from "../../redux/actions/ChannelAction";
 
 const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
+  /* Destructuring the snippet and statistics object. */
   const { channelId, channelTitle, description, title, publishedAt } = snippet;
-  const { viewCount, likeCount, dislikeCount } = statistics;
+  const { viewCount, likeCount } = statistics;
 
   const dispatch = useDispatch();
 
+  /* Destructuring the channelDetails object from the state. */
   const { snippet: channelSnippet, statistics: channelStatistics } =
     useSelector((state) => state.channelDetails.channel);
 
+  /* Getting the subscription status from the state. */
   const subscriptionStatus = useSelector(
     (state) => state.channelDetails.subscriptionStatus
   );
 
+  /* Dispatching the getChannelDetails and checkSubscriptionStatus actions. */
   useEffect(() => {
     dispatch(getChannelDetails(channelId));
     dispatch(checkSubscriptionStatus(channelId));
   }, [dispatch, channelId]);
 
+  /* A function that returns a div. */
   return (
     <div className="py-2 videoMetaData">
       <div className="videoMetaData__top">
@@ -39,18 +45,18 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
             {moment(publishedAt).fromNow()}
           </span>
 
-          <div>
+          <div className="videometadata__like">
             <span className="mr-3">
               <MdThumbUp size={26} /> {numeral(likeCount).format("0.a")}
             </span>
             <span className="mr-3">
-              <MdThumbDown size={26} /> {numeral(dislikeCount).format("0.a")}
+              <MdThumbDown size={26} />
             </span>
           </div>
         </div>
       </div>
       <div className="py-3 my-2 videoMetaData__channel d-flex justify-content-between align-items-center">
-        <div className="d-flex">
+        <div className="d-flex videometadata__subscribe">
           <img
             src={channelSnippet?.thumbnails?.default?.url}
             alt=""

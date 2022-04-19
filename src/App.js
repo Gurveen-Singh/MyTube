@@ -1,6 +1,6 @@
+/* Importing the necessary components and libraries. */
 import React, { useState } from "react";
 import { Container } from "react-bootstrap";
-
 import { Header, SideBar } from "./components/index";
 import {
   Login,
@@ -10,16 +10,19 @@ import {
   Channel,
   Subscription,
 } from "./container/index";
-
 import { Route, Routes, Navigate } from "react-router-dom";
-
 import "./App.scss";
 
 const App = () => {
+  /* A hook that is used to toggle the sidebar. */
   const [sidebar, toggleSidebar] = useState(false);
 
+  /**
+   * Const handleToggleSidebar = () => toggleSidebar((value) => !value);
+   */
   const handleToggleSidebar = () => toggleSidebar((value) => !value);
 
+  /* Returning the JSX code. */
   return (
     <React.Fragment>
       <Header handleToggleSidebar={handleToggleSidebar} />

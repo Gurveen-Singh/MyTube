@@ -1,3 +1,4 @@
+/* Exporting the constants to be used in the reducer and action. */
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGIN_REQUEST = "LOGIN_REQUEST";

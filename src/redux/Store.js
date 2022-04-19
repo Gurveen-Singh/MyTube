@@ -1,8 +1,7 @@
+/* Importing all the reducers from the reducers folder. */
 import { createStore, applyMiddleware, combineReducers } from "redux";
-
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-
 import { authReducer } from "./reducers/AuthReducer";
 import {
   homeVideosReducer,
@@ -15,6 +14,7 @@ import {
 import { channelDetailsReducer } from "./reducers/ChannelReducer";
 import { commentListReducer } from "./reducers/CommentsReducer";
 
+/* Combining all the reducers into one reducer. */
 const rootReducer = combineReducers({
   auth: authReducer,
   homeVideos: homeVideosReducer,
@@ -24,10 +24,10 @@ const rootReducer = combineReducers({
   relatedVideos: relatedVideoReducer,
   searchedVideos: searchedVideosReducer,
   subscriptionsChannel: subscriptionsChannelReducer,
-
   channelVideos: channelVideosReducer,
 });
 
+/* Creating a store with the rootReducer and the middleware thunk. */
 const store = createStore(
   rootReducer,
   {},

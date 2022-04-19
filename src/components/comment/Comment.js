@@ -1,11 +1,14 @@
+/* Importing the React library, moment library, and the Comment.scss file. */
 import React from "react";
 import moment from "moment";
 import "./Comment.scss";
 
 const Comment = ({ comment }) => {
+  /* Destructuring the comment object. */
   const { authorDisplayName, authorProfileImageUrl, publishedAt, textDisplay } =
     comment;
 
+  /* Returning the comment JSX. */
   return (
     <div className="p-2 comment d-flex">
       <div className="comment__avatar">

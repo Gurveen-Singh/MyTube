@@ -1,3 +1,4 @@
+/* Importing the action types from the actionType.js file. */
 import {
   LOAD_PROFILE,
   LOGIN_FAIL,
@@ -6,6 +7,7 @@ import {
   LOG_OUT,
 } from "../actionType";
 
+/* Setting the initial state of the reducer. */
 const initialState = {
   accessToken: sessionStorage.getItem("ytc-access-token")
     ? sessionStorage.getItem("ytc-access-token")
@@ -17,8 +19,10 @@ const initialState = {
 };
 
 export const authReducer = (prevState = initialState, action) => {
+  /* Destructuring the action object. */
   const { type, payload } = action;
 
+  /* A switch statement that is checking the action type and returning the new state. */
   switch (type) {
     case LOGIN_REQUEST:
       return {
